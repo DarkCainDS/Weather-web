@@ -13,7 +13,7 @@ export const Cards = () => {
     const [data, setData] = useState({})
     const [location, setLocation] = useState('')
     const [fieldValue, setFieldValue] = useState('')
-    
+
 
 
     const url2 = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=80de03045dfaa31a472d5a5bbc6f30a2`
@@ -53,24 +53,24 @@ export const Cards = () => {
                 <input value={location} onBlur={handlerBlur} onChange={event => setLocation(event.target.value)} onKeyPress={searchLocation} placeholder='Enter location' type='text'></input>
             </div>
             <div className='loading'>
-                <span style={{animationDelay:'0.3s'}}>F</span>
-                <span style={{animationDelay:'0.5s'}}>o</span>
-                <span style={{animationDelay:'0.7s'}}>l</span>
-                <span style={{animationDelay:'1s'}}>l</span>
-                <span style={{animationDelay:'1.3s'}}>o</span>
-                <span style={{animationDelay:'1.5s'}}>w</span>
-                <span style={{animationDelay:'1.7s'}}>i</span>
-                <span style={{animationDelay:'2s'}}>n</span>
-                <span style={{animationDelay:'2.3s'}}>g</span> &nbsp;
-                <span style={{animationDelay:'2.5s'}}>d</span>
-                <span style={{animationDelay:'2.7s'}}>a</span>
-                <span style={{animationDelay:'3s'}}>y</span>
-                <span style={{animationDelay:'3.3s'}}>s</span>
+                <span style={{ animationDelay: '0.3s' }}>F</span>
+                <span style={{ animationDelay: '0.5s' }}>o</span>
+                <span style={{ animationDelay: '0.7s' }}>l</span>
+                <span style={{ animationDelay: '1s' }}>l</span>
+                <span style={{ animationDelay: '1.3s' }}>o</span>
+                <span style={{ animationDelay: '1.5s' }}>w</span>
+                <span style={{ animationDelay: '1.7s' }}>i</span>
+                <span style={{ animationDelay: '2s' }}>n</span>
+                <span style={{ animationDelay: '2.3s' }}>g</span> &nbsp;
+                <span style={{ animationDelay: '2.5s' }}>d</span>
+                <span style={{ animationDelay: '2.7s' }}>a</span>
+                <span style={{ animationDelay: '3s' }}>y</span>
+                <span style={{ animationDelay: '3.3s' }}>s</span>
             </div>
             <div className='cards-container'>
                 <div className='card'>
                     <div className='city'>
-                        <h1>{location}</h1>
+                        {data.city ? <p>{data.city.name}</p> : null}
                         {data.list ? <p>{data.list[5].weather[0].main}</p> : null}
                         {data.list ? <h3>{data.list[5].dt_txt.slice(0, 10)}</h3> : null}
                     </div>
@@ -91,7 +91,7 @@ export const Cards = () => {
                 </div>
                 <div className='card'>
                     <div className='city'>
-                        <h1>{location}</h1>
+                        {data.city ? <p>{data.city.name}</p> : null}
                         {data.list ? <p>{data.list[10].weather[0].main}</p> : null}
                         {data.list ? <h3>{data.list[10].dt_txt.slice(0, 10)}</h3> : null}
                     </div>
@@ -112,7 +112,7 @@ export const Cards = () => {
                 </div>
                 <div className='card'>
                     <div className='city'>
-                        <h1>{location}</h1>
+                        {data.city ? <p>{data.city.name}</p> : null}
                         {data.list ? <p>{data.list[15].weather[0].main}</p> : null}
                         {data.list ? <h3>{data.list[15].dt_txt.slice(0, 10)}</h3> : null}
                     </div>
@@ -132,11 +132,10 @@ export const Cards = () => {
                     </div>
                 </div>
             </div>
-            <IconContext.Provider value={{color: "#50C9F2", size: '4em' }}>
-            <NavLink to='/home'><button className="following-days"><BiArrowToLeft/></button></NavLink>
+            <IconContext.Provider value={{ color: "#50C9F2", size: '4em' }}>
+                <NavLink to='/home'><button className="following-days"><BiArrowToLeft /></button></NavLink>
             </IconContext.Provider>
         </div>
     )
 }
 
- 
